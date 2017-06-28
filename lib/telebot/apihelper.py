@@ -126,7 +126,7 @@ def send_message(token, chat_id, text, disable_web_page_preview=None, reply_to_m
     :return:
     """
     method_url = r'sendMessage'
-    payload = {'chat_id': str(chat_id), 'text': text.encode("utf-8")}
+    payload = {'chat_id': str(chat_id), 'text': text.decode("utf-8").encode("utf-8")}
     if disable_web_page_preview:
         payload['disable_web_page_preview'] = disable_web_page_preview
     if reply_to_message_id:
@@ -445,7 +445,7 @@ def unban_chat_member(token, chat_id, user_id):
 def edit_message_text(token, text, chat_id=None, message_id=None, inline_message_id=None, parse_mode=None,
                       disable_web_page_preview=None, reply_markup=None):
     method_url = r'editMessageText'
-    payload = {'text': text.encode("utf-8")}
+    payload = {'text': text.decode("utf-8").encode("utf-8")}
     if chat_id:
         payload['chat_id'] = chat_id
     if message_id:
